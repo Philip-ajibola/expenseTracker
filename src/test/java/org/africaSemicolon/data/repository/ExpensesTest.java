@@ -2,7 +2,7 @@ package org.africaSemicolon.data.repository;
 
 import org.africaSemicolon.data.model.Category;
 import org.africaSemicolon.data.model.Expense;
-import org.africaSemicolon.dto.ExpenseRequest;
+import org.africaSemicolon.dto.request.ExpenseRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
@@ -19,10 +19,10 @@ public class ExpensesTest {
     public void testThatExpenseAreSaved(){
         Expense expense = new Expense();
         ExpenseRequest expenseRequest = new ExpenseRequest();
-        expenseRequest.setAmount(BigDecimal.valueOf(2000));
+        expenseRequest.setAmount("2000");
         expenseRequest.setCategory(Category.CLOTHES);
         expense.setCategory(expenseRequest.getCategory());
-        expense.setAmount(expenseRequest.getAmount());
+        expense.setAmount(BigDecimal.valueOf(Double.parseDouble(expenseRequest.getAmount())));
         expenses.save(expense);
         assertEquals(1,expenses.count());
     }

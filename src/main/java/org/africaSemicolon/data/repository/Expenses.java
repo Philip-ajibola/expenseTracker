@@ -3,6 +3,8 @@ package org.africaSemicolon.data.repository;
 import org.africaSemicolon.data.model.Expense;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface Expenses extends MongoRepository<Expense,String> {
+import java.util.Optional;
 
+public interface Expenses extends MongoRepository<Expense,String> {
+    Expense findByExpenseTitleAndExpenseOwnerName(String expenseTitle, String username);
 }

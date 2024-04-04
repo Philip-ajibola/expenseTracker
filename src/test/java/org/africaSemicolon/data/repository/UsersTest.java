@@ -1,8 +1,7 @@
 package org.africaSemicolon.data.repository;
 
 import org.africaSemicolon.data.model.User;
-import org.africaSemicolon.dto.RegisterRequest;
-import org.junit.jupiter.api.AfterAll;
+import org.africaSemicolon.dto.request.RegisterRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +22,7 @@ public class UsersTest {
         user.setFirstName(registerRequest.getFirstName());
         user.setLastName(registerRequest.getLastName());
         users.save(user);
-        assertEquals(1,);
+        assertEquals(1,users.count());
     }
 
 }
