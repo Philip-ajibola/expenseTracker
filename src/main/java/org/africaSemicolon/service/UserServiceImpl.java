@@ -11,6 +11,7 @@ import org.africaSemicolon.dto.response.CreateUserResponse;
 import org.africaSemicolon.exception.IncomeNotFoundException;
 import org.africaSemicolon.exception.UserNotFoundException;
 import org.africaSemicolon.exception.UserNotLoggedInException;
+import org.africaSemicolon.exception.UsernameALreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,8 +45,15 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public CreateUserResponse registerUser(RegisterRequest request) {
+        checkIfUserExist(request.getUsername());
         User user = users.save(map(request));
         return map(user);
+    }
+
+    private void checkIfUserExist(String username) {
+        for(User user : users.findAll()){
+            if(username.equals(user.getUsername()))throw new UsernameALreadyExistException("User Name Already Exist");
+        }
     }
 
     @Override
@@ -98,10 +106,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void login(LoginRequest loginRequest) {
+    public String login(LoginRequest loginRequest) {
         User  user= users.findByUsername(loginRequest.getUsername());
         user.setLoggedIn(true);
         users.save(user);
+        return "Login Successful";
     }
 
     private static void validateUser(User user) {

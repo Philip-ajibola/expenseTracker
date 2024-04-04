@@ -5,6 +5,7 @@ import org.africaSemicolon.data.repository.Expenses;
 import org.africaSemicolon.dto.request.DeleteExpenseRequest;
 import org.africaSemicolon.dto.request.ExpenseRequest;
 import org.africaSemicolon.dto.response.AddExpenseResponse;
+import org.africaSemicolon.exception.ExpenseExistException;
 import org.africaSemicolon.exception.InvalidAmountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +22,16 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public AddExpenseResponse addExpense(ExpenseRequest expenseRequest) {
+        validateExpense(expenseRequest);
         if(Double.parseDouble(expenseRequest.getAmount())<=0)throw new InvalidAmountException("Invalid Amount");
         Expense expense = expenses.save(map(expenseRequest));
         return map(expense);
+    }
+
+    private void validateExpense(ExpenseRequest expenseRequest) {
+        for(Expense expense: expenses.findAll()){
+            if(expenseRequest.getExpenseTitle().equals(expense.getExpenseTitle()) && expense.getExpenseOwnerName().equals(expenseRequest.getExpenseOwnerName()))throw new ExpenseExistException("Expense Title exist Already");
+        }
     }
 
     @Override

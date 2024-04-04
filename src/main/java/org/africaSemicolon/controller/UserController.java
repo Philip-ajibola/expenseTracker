@@ -1,7 +1,10 @@
 package org.africaSemicolon.controller;
 
+import org.africaSemicolon.dto.request.IncomeRequest;
+import org.africaSemicolon.dto.request.LoginRequest;
 import org.africaSemicolon.dto.request.RegisterRequest;
 import org.africaSemicolon.dto.response.ApiResponse;
+import org.africaSemicolon.exception.ExpenseTrackerException;
 import org.africaSemicolon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +28,24 @@ public class UserController {
             var result = userService.registerUser(request);
             return new ResponseEntity<>(new ApiResponse(true,result), CREATED);
         }catch(Exception e){
+            return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),BAD_REQUEST);
+        }
+    }
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
+        try{
+            var result  = userService.login(loginRequest);
+            return new ResponseEntity<>(new ApiResponse(true,result), CREATED);
+        }catch (Exception e){
+            return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),BAD_REQUEST);
+        }
+    }
+    @PostMapping("/add_income")
+    public ResponseEntity<?> addIncome(@RequestBody IncomeRequest incomeRequest){
+        try{
+            var result  = userService.addIncome(incomeRequest);
+            return new ResponseEntity<>(new ApiResponse(true,result), CREATED);
+        }catch (ExpenseTrackerException e) {
             return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),BAD_REQUEST);
         }
     }

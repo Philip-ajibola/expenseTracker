@@ -15,5 +15,5 @@ public interface UserService {
 
     void deleteIncome(DeleteIncomeRequest deleteIncomeRequest);
 
-    void login(LoginRequest loginRequest);
+    String login(LoginRequest loginRequest);
 }

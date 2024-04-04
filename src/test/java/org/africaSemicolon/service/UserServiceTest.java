@@ -225,6 +225,16 @@ public class UserServiceTest {
         User user = users.findByUsername(request.getUsername());
         assertThrows(UserNotLoggedInException.class,()->userService.addExpense(expenseRequest));
     }
+    @Test
+    public void testThatUserCanLogout(){
+        userService.registerUser(request);
+        User user = users.findByUsername(request.getUsername());
+        LogoutRequest logoutRequest = new LogoutRequest();
+        logoutRequest.setPassword(user.getPassword());
+        logoutRequest.setUsername(user.getUsername());
+        assertFalse(user.isLoggedIn());
+    }
+
 
 
 }
