@@ -5,16 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ff47e0-db93-4ca9-9477-0305ff0163a1" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/LogoutRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/ExpenseExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/IncomeTitleExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/UsernameALreadyExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/SpendingRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/response/SpendingResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/CategoryNotFound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/InValidUserNameException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/InvalidPasswordException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/NoExpenseExistException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/exception/NoIncomeExistException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Expenses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Expenses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Incomes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Incomes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/utilities/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/utilities/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/IncomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/IncomeServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +110,7 @@
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.africaSemicolon.exception" />
+      <recent name="org.africaSemicolon.dto.response" />
       <recent name="org.africaSemicolon.dto.request" />
       <recent name="org.africaSemicolon.dto" />
     </key>
@@ -117,7 +129,37 @@
       <recent name="org.africaSemicolon.data.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Main">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
+    <configuration name="ExpenseServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="expenseTracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.africaSemicolon.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
+      <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.ExpenseServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="IncomeServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="expenseTracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.africaSemicolon.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
+      <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.IncomeServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="expenseTracker" />
       <extension name="coverage">
@@ -133,7 +175,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testThatUserCanLogin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testThatWhenExpenseIsAddedIncomeAmountReduce" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="expenseTracker" />
       <extension name="coverage">
         <pattern>
@@ -143,39 +185,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
       <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testThatUserCanLogin" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceTest.testThatUserCanLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="expenseTracker" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.africaSemicolon.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
-      <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testThatUserCanLogout" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserServiceTest.testThatWhenUserIsNotLoggedInUserCantPerformAnyAction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="expenseTracker" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.africaSemicolon.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
-      <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testThatWhenUserIsNotLoggedInUserCantPerformAnyAction" />
+      <option name="METHOD_NAME" value="testThatWhenExpenseIsAddedIncomeAmountReduce" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -196,11 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Spring Boot.Main" />
-        <item itemvalue="JUnit.UserServiceTest.testThatUserCanLogout" />
-        <item itemvalue="JUnit.UserServiceTest.testThatWhenUserIsNotLoggedInUserCantPerformAnyAction" />
         <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.UserServiceTest.testThatUserCanLogin" />
+        <item itemvalue="JUnit.UserServiceTest.testThatWhenExpenseIsAddedIncomeAmountReduce" />
+        <item itemvalue="JUnit.IncomeServiceImplTest" />
+        <item itemvalue="JUnit.ExpenseServiceImplTest" />
+        <item itemvalue="Spring Boot.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -216,7 +226,8 @@
       <workItem from="1712160532687" duration="13852000" />
       <workItem from="1712175549994" duration="322000" />
       <workItem from="1712176312308" duration="40648000" />
-      <workItem from="1712261551859" duration="1041000" />
+      <workItem from="1712261551859" duration="30357000" />
+      <workItem from="1712484285103" duration="598000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -256,13 +267,13 @@
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java</url>
-          <line>222</line>
-          <properties class="org.africaSemicolon.service.UserServiceTest" method="testThatWhenUserIsNotLoggedInUserCantPerformAnyAction">
+          <url>file://$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java</url>
+          <line>18</line>
+          <properties class="org.africaSemicolon.service.UserService" method="deleteExpense">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>
-          <option name="timeStamp" value="5" />
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

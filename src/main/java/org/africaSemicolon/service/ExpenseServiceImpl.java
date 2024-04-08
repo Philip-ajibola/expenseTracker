@@ -10,9 +10,6 @@ import org.africaSemicolon.exception.InvalidAmountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
-import java.util.Optional;
-
 import static org.africaSemicolon.utilities.Mapper.map;
 
 @Service
@@ -42,6 +39,12 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public Expense findByTitleAndUsername(String expenseTitle,String username) {
         return expenses.findByExpenseTitleAndExpenseOwnerName(expenseTitle,username);
+    }
+
+    @Override
+    public String deleteAllExpenseOf(String username) {
+        expenses.findAll().forEach(expense -> {if(expense.getExpenseOwnerName().equals(username.toLowerCase())) expenses.delete(expense);});
+        return String.format("%s Expenses Deleted Successfully",username);
     }
 
 }

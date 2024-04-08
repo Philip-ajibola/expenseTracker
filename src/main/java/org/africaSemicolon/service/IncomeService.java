@@ -14,4 +14,6 @@ public interface IncomeService {
     String deleteIncome(DeleteIncomeRequest deleteIncomeRequest);
 
 
+    String deleteAllIncomeOf(String username);
 }
+

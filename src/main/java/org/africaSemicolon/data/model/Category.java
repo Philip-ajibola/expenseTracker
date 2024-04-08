@@ -11,5 +11,6 @@ public enum Category {
     SHOPPING,
     SPORTS,
     TRAVEL,
+    SCHOOL
 
 }

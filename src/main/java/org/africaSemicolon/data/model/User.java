@@ -18,6 +18,7 @@ public class User {
     private String password;
     private boolean isLoggedIn;
     private BigDecimal balance = BigDecimal.valueOf(0);
+    @DBRef
     private List<Income> income = new ArrayList<>();
     @Id
     private String id;

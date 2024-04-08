@@ -10,4 +10,6 @@ public interface ExpenseService {
     String deleteExpense(DeleteExpenseRequest deleteExpenseRequest);
 
     Expense findByTitleAndUsername(String expenseTitle,String username);
+
+    String deleteAllExpenseOf(String username);
 }

@@ -6,6 +6,7 @@ import org.africaSemicolon.data.repository.Expenses;
 import org.africaSemicolon.data.repository.Incomes;
 import org.africaSemicolon.data.repository.Users;
 import org.africaSemicolon.dto.request.*;
+import org.africaSemicolon.exception.InvalidAmountException;
 import org.africaSemicolon.exception.UserNotLoggedInException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.InputMismatchException;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +40,7 @@ public class UserServiceTest {
         request.setUsername("username");
         request.setFirstName("firstname");
         request.setLastName("lastName");
+        request.setPassword("password");
 
          incomeRequest = new IncomeRequest();
         incomeRequest.setIncome("600000");
@@ -108,7 +111,7 @@ public class UserServiceTest {
         userService.addExpense(expenseRequest);
         user =  users.findByUsername(request.getUsername());
         assertEquals(1,incomes.count());
-        assertEquals(BigDecimal.valueOf(598_000.0),user.getBalance());
+        assertEquals(BigDecimal.valueOf(598_000.00).setScale(2, RoundingMode.HALF_UP),user.getBalance());
     }
     @Test
     public void testThatWhenExpenseIsDeletedTheBalanceChangeStateToFormalState(){
@@ -129,7 +132,7 @@ public class UserServiceTest {
 
         user =  users.findByUsername(request.getUsername());
         assertEquals(1,incomes.count());
-        assertEquals(BigDecimal.valueOf(600_000.0),user.getBalance());
+        assertEquals(BigDecimal.valueOf(600_000.00).setScale(2, RoundingMode.HALF_UP),user.getBalance());
     }
     @Test
     public void testThatIncomeCanBeDeleted(){
@@ -154,7 +157,7 @@ public class UserServiceTest {
 
         user =  users.findByUsername(request.getUsername());
         assertEquals(0,incomes.count());
-        assertEquals(BigDecimal.valueOf(0.0),user.getBalance());
+        assertEquals(BigDecimal.valueOf(0.00).setScale(2, RoundingMode.HALF_UP),user.getBalance());
     }
     @Test
     public void testThatMultipleIncomeCanBeAdded(){
@@ -176,7 +179,7 @@ public class UserServiceTest {
         userService.addExpense(expenseRequest1);
         user =  users.findByUsername(request.getUsername());
         assertEquals(1,incomes.count());
-        assertEquals(BigDecimal.valueOf(548_000.0),user.getBalance());
+        assertEquals(BigDecimal.valueOf(548_000.00).setScale(2, RoundingMode.HALF_UP),user.getBalance());
     }
     @Test
     public void testThatWhenEntityIsDeletedBalanceGoBackToThePreviousState(){
@@ -202,7 +205,7 @@ public class UserServiceTest {
         userService.deleteExpense(deleteExpenseRequest);
         user =  users.findByUsername(request.getUsername());
         assertEquals(1,incomes.count());
-        assertEquals(BigDecimal.valueOf(598_000.0),user.getBalance());
+        assertEquals(BigDecimal.valueOf(598_000.00).setScale(2, RoundingMode.HALF_UP),user.getBalance());
     }
     @Test
     public void testThatWhenInputIsInvalid_ExceptionIsThrown(){
@@ -214,7 +217,7 @@ public class UserServiceTest {
         userService.login(loginRequest);
         incomeRequest.setUsername(user.getUsername());
         incomeRequest.setIncome("rt6gh");
-        assertThrows(InputMismatchException.class,()-> userService.addIncome(incomeRequest));
+        assertThrows(InvalidAmountException.class,()-> userService.addIncome(incomeRequest));
         assertEquals(0,incomes.count());
         user = users.findByUsername(request.getUsername());
         assertEquals(0,user.getIncome().size());

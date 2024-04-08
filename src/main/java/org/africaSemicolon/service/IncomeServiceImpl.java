@@ -42,8 +42,11 @@ public class IncomeServiceImpl implements IncomeService{
       return  map(deleteIncomeRequest,incomes);
     }
 
-
-
+    @Override
+    public String deleteAllIncomeOf(String username) {
+        incomes.findAll().forEach(income -> {if( income.getUsername().equals(username.toLowerCase())) incomes.delete(income);});
+        return String.format("%s Incomes Deleted Successfully",username);
+    }
 
 
 }

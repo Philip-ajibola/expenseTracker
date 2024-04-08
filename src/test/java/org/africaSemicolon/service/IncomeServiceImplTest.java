@@ -28,6 +28,8 @@ public class IncomeServiceImplTest {
         Income income = new Income();
         IncomeRequest incomeRequest = new IncomeRequest();
         incomeRequest.setIncome("600000");
+        incomeRequest.setUsername("username");
+        income.setIncomeTitle("title");
         income.setIncome(BigDecimal.valueOf(Double.parseDouble(incomeRequest.getIncome())));
         incomeService.addIncome(incomeRequest);
         assertEquals(1,incomes.count());
