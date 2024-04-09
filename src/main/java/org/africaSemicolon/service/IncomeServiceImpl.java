@@ -25,10 +25,10 @@ public class IncomeServiceImpl implements IncomeService{
     }
 
     @Override
-    public AddIncomeResponse addIncome(IncomeRequest incomeRequest){
+    public Income addIncome(IncomeRequest incomeRequest){
         validateIncome(incomeRequest);
-        Income income = incomes.save(map(incomeRequest));
-        return map(income);
+        return incomes.save(map(incomeRequest));
+
     }
 
     private void validateIncome(IncomeRequest incomeRequest) {
