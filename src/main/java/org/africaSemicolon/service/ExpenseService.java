@@ -6,7 +6,7 @@ import org.africaSemicolon.dto.request.ExpenseRequest;
 import org.africaSemicolon.dto.response.AddExpenseResponse;
 
 public interface ExpenseService {
-    AddExpenseResponse addExpense(ExpenseRequest expenseRequest);
+    Expense addExpense(ExpenseRequest expenseRequest);
     String deleteExpense(DeleteExpenseRequest deleteExpenseRequest);
 
     Expense findByTitleAndUsername(String expenseTitle,String username);
