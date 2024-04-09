@@ -6,7 +6,9 @@ import org.africaSemicolon.data.repository.Expenses;
 import org.africaSemicolon.data.repository.Incomes;
 import org.africaSemicolon.data.repository.Users;
 import org.africaSemicolon.dto.request.*;
+import org.africaSemicolon.exception.InValidUserNameException;
 import org.africaSemicolon.exception.InvalidAmountException;
+import org.africaSemicolon.exception.InvalidPasswordException;
 import org.africaSemicolon.exception.UserNotLoggedInException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -58,6 +60,16 @@ public class UserServiceTest {
     public void testThatUserCanBeCreated(){
         userService.registerUser(request);
         assertEquals(1,users.count());
+    }
+    @Test
+    public void testThatWhenUsernameIsEmptyUserCantBeRegistered(){
+        request.setUsername("");
+        assertThrows(InValidUserNameException.class,()->userService.registerUser(request));
+    }
+    @Test
+    public void testThatWhenPasswordIsEmptyUserCantBeRegistered(){
+        request.setPassword("");
+        assertThrows(InvalidPasswordException.class,()->userService.registerUser(request));
     }
     @Test
     public void testThatUserCanLogin(){
