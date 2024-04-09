@@ -9,7 +9,7 @@ public interface IncomeService {
      Income findBy(String username, String incomeTitle) ;
 
 
-    AddIncomeResponse addIncome(IncomeRequest incomeRequest);
+    Income addIncome(IncomeRequest incomeRequest);
 
     String deleteIncome(DeleteIncomeRequest deleteIncomeRequest);
 
