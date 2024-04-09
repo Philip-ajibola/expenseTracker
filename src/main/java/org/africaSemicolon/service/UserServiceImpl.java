@@ -30,19 +30,20 @@ public class UserServiceImpl implements UserService{
     private ExpenseService expenseService;
     @Override
     public AddExpenseResponse addExpense(ExpenseRequest expenseRequest) {
-        validateUserName(expenseRequest.getExpenseOwnerName());
         validateMoney(expenseRequest.getAmount());
-        User user = users.findByUsername(expenseRequest.getExpenseOwnerName().toLowerCase());
-        validateUser(user);
+        User user = findByUsername(expenseRequest.getExpenseOwnerName().toLowerCase());
         validateLogin(user);
+        Expense expense = expenseService.addExpense(expenseRequest);
         user.setBalance(user.getBalance().subtract(BigDecimal.valueOf(Double.parseDouble(expenseRequest.getAmount()))).setScale(2, RoundingMode.HALF_UP));
-        AddExpenseResponse addExpenseResponse = expenseService.addExpense(expenseRequest);
-        Expense expense = expenseService.findByTitleAndUsername(expenseRequest.getExpenseTitle(),expenseRequest.getExpenseOwnerName().toLowerCase());
-        List<Expense> expenseList = user.getExpenseList();
-        expenseList.add(expense);
-        user.setExpenseList(expenseList);
+        user.getExpenseList().add(expense);
         users.save(user);
-        return addExpenseResponse;
+        return map(expense);
+    }
+
+    private User findByUsername(String username) {
+        User user = users.findByUsername(username);
+        validateUser(user);
+        return user;
     }
 
 
@@ -55,46 +56,34 @@ public class UserServiceImpl implements UserService{
     }
 
     private void checkIfUserExist(String username) {
-        for(User user : users.findAll()){
-            if(username.equals(user.getUsername()))throw new UsernameALreadyExistException("User Name Already Exist");
-        }
+        boolean existByUsername = users.existsByUsername(username);
+        if(existByUsername)throw new UserNotFoundException("User Not Found");
     }
 
     @Override
     public AddIncomeResponse addIncome(IncomeRequest incomeRequest) {
-        validateUserName(incomeRequest.getUsername());
         validateMoney(incomeRequest.getIncome());
-        User user = users.findByUsername(incomeRequest.getUsername().toLowerCase());
-        validateUser(user);
+        User user = findByUsername(incomeRequest.getUsername().toLowerCase());
         validateLogin(user);
-        AddIncomeResponse addIncomeResponse = incomeService.addIncome(incomeRequest);
+        Income income = incomeService.addIncome(incomeRequest);
         user.setBalance(user.getBalance().add(BigDecimal.valueOf(Double.parseDouble(incomeRequest.getIncome()))).setScale(2, RoundingMode.HALF_UP));
-        Income income = incomeService.findBy(incomeRequest.getUsername().toLowerCase(),incomeRequest.getIncomeTitle());
-        if(income == null) throw new IncomeNotFoundException("Income Not Found");
-        List<Income> incomes = user.getIncome();
-        incomes.add(income);
-        user.setIncome(incomes);
+        user.getIncome().add(income);
         users.save(user);
-            return addIncomeResponse;
+        return map(income);
     }
+
+
     private void validateMoney(String amount){
         if (amount.isEmpty() || !amount.matches("\\d+(\\.\\d+)?"))throw new InvalidAmountException("Invalid Amount Provivde");
     }
-    private void validateUserName(String username){
-        if(username.isEmpty())throw new InValidUserNameException("Please Provide A username");
-    }
-
 
     @Override
     public String deleteExpense(DeleteExpenseRequest deleteExpenseRequest) {
-        validateUserName(deleteExpenseRequest.getUsername());
-        User user = users.findByUsername(deleteExpenseRequest.getUsername().toLowerCase());
-        validateUser(user);
+        User user = findByUsername(deleteExpenseRequest.getUsername().toLowerCase());
         validateLogin(user);
         Expense expense  = expenseService.findByTitleAndUsername(deleteExpenseRequest.getExpenseTitle(), deleteExpenseRequest.getUsername());
         user.setBalance(user.getBalance().add(expense.getAmount()).setScale(2, RoundingMode.HALF_UP));
-        List<Expense> expenseList = user.getExpenseList();
-        expenseList.remove(expense);
+        user.getExpenseList().remove(expense);
         users.save(user);
         return expenseService.deleteExpense(deleteExpenseRequest);
 
@@ -102,16 +91,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String deleteIncome(DeleteIncomeRequest deleteIncomeRequest) {
-        validateUserName(deleteIncomeRequest.getUsername());
-            User user = users.findByUsername(deleteIncomeRequest.getUsername().toLowerCase());
-            validateUser(user);
+            User user = findByUsername(deleteIncomeRequest.getUsername().toLowerCase());
             validateLogin(user);
             Income income = incomeService.findBy(deleteIncomeRequest.getUsername(),deleteIncomeRequest.getIncomeTitle());
-            if(income == null) throw new IncomeNotFoundException("Income Not Found");
             user.setBalance(user.getBalance().subtract(income.getIncome()).setScale(2, RoundingMode.HALF_UP));
-            List<Income> incomes = user.getIncome();
-            incomes.remove(income);
-            user.setIncome(incomes);
+            user.getIncome().remove(income);
             users.save(user);
             return incomeService.deleteIncome(deleteIncomeRequest);
     }
@@ -122,23 +106,18 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String login(LoginRequest loginRequest) {
-        validateUserName(loginRequest.getUsername());
-        validatePassword(loginRequest.getPassword());
-        User  user= users.findByUsername(loginRequest.getUsername().toLowerCase());
+        User  user= findByUsername(loginRequest.getUsername().toLowerCase());
         validateUser(user);
         if(!user.getPassword().equals(loginRequest.getPassword()))throw new InvalidPasswordException("Wrong Password \n Provide A Valid ");
         user.setLoggedIn(true);
         users.save(user);
         return "Login Successful";
     }
-    private void validatePassword(String password){
-        if(password.isEmpty())throw new InvalidPasswordException("Provide  A  Password");
-    }
+
 
     @Override
     public SpendingResponse showSpendings(SpendingRequest spendingRequest) {
-        validateUserName(spendingRequest.getUsername());
-        User user = users.findByUsername(spendingRequest.getUsername().toLowerCase());
+        User user = findByUsername(spendingRequest.getUsername().toLowerCase());
         validateUser(user);
         validateLogin(user);
         return spendingMap(user);
@@ -146,7 +125,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<Income> getAllIncome(String username) {
-        validateUserName(username);
         User user = users.findByUsername(username.toLowerCase());
         validateUser(user);
         return user.getIncome();
@@ -154,7 +132,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<Expense> findAllExpenses(String username) {
-        validateUserName(username);
         User user = users.findByUsername(username);
         validateUser(user);
         return user.getExpenseList();
@@ -162,10 +139,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String deleteUser(String username) {
-        validateUserName(username);
-        username = username.toLowerCase();
-        User user = users.findByUsername(username);
-        validateUser(user);
+        User user = findByUsername(username.toLowerCase());
         validateLogin(user);
         expenseService.deleteAllExpenseOf(username);
         incomeService.deleteAllIncomeOf(username);
@@ -175,10 +149,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String logout(LogoutRequest logoutRequest) {
-        validateUserName(logoutRequest.getUsername());
-        validatePassword(logoutRequest.getPassword());
-        User user = users.findByUsername(logoutRequest.getUsername().toLowerCase());
-        validateUser(user);
+        User user = findByUsername(logoutRequest.getUsername().toLowerCase());
         if(!user.getPassword().equals(logoutRequest.getPassword()))throw new InvalidPasswordException("Wrong Password \n Provide A Valid ");
         user.setLoggedIn(false);
         users.save(user);
