@@ -6,6 +6,7 @@ import org.africaSemicolon.dto.request.DeleteExpenseRequest;
 import org.africaSemicolon.dto.request.ExpenseRequest;
 import org.africaSemicolon.dto.response.AddExpenseResponse;
 import org.africaSemicolon.exception.ExpenseExistException;
+import org.africaSemicolon.exception.ExpenseNotFoundException;
 import org.africaSemicolon.exception.InvalidAmountException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,19 +19,16 @@ public class ExpenseServiceImpl implements ExpenseService {
     private Expenses expenses;
 
     @Override
-    public AddExpenseResponse addExpense(ExpenseRequest expenseRequest) {
+    public Expense addExpense(ExpenseRequest expenseRequest) {
         validateExpense(expenseRequest);
         if(Double.parseDouble(expenseRequest.getAmount())<=0)throw new InvalidAmountException("Invalid Amount");
-        Expense expense = expenses.save(map(expenseRequest));
-        return map(expense);
+        return expenses.save(map(expenseRequest));
     }
 
     private void validateExpense(ExpenseRequest expenseRequest) {
-        for(Expense expense: expenses.findAll()){
-            if(expenseRequest.getExpenseTitle().equals(expense.getExpenseTitle()) && expense.getExpenseOwnerName().equals(expenseRequest.getExpenseOwnerName()))throw new ExpenseExistException("Expense Title exist Already");
-        }
+        boolean existByTitleAndOwner = expenses.existsByTitleAndExpenseOwnerName(expenseRequest.getExpenseTitle(),expenseRequest.getExpenseOwnerName());
+        if(existByTitleAndOwner)throw new ExpenseExistException("Expense Title Already Exist");
     }
-
     @Override
     public String deleteExpense(DeleteExpenseRequest deleteExpenseRequest) {
            return map(deleteExpenseRequest, expenses);
@@ -38,7 +36,9 @@ public class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense findByTitleAndUsername(String expenseTitle,String username) {
-        return expenses.findByExpenseTitleAndExpenseOwnerName(expenseTitle,username);
+        Expense expense = expenses.findByExpenseTitleAndExpenseOwnerName(expenseTitle,username);
+        if(expense == null) throw new ExpenseNotFoundException("Expense not found ");
+        return expense;
     }
 
     @Override
