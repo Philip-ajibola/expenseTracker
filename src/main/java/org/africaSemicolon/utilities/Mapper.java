@@ -24,7 +24,6 @@ import java.util.NoSuchElementException;
 public class Mapper {
     public static Expense map(ExpenseRequest expenseRequest) {
         Expense expense = new Expense();
-       // validateAmount(expenseRequest.getAmount());
         expense.setAmount(BigDecimal.valueOf(Double.parseDouble(expenseRequest.getAmount())));
         expense.setCategory(expenseRequest.getCategory());
         expense.setExpenseOwnerName(expenseRequest.getExpenseOwnerName().toLowerCase());
@@ -57,12 +56,6 @@ public class Mapper {
             throw new InvalidAmountException("Invalid Income Amount");
         return income;
     }
-
-//    public static void validateAmount(String incomeRequest) {
-//        if(incomeRequest.isEmpty())throw new InputMismatchException("Invalid Input");
-//        if (!incomeRequest.matches("^\\d+(\\.\\d+)?$")) throw new InputMismatchException("Invalid Input");
-//
-//    }
 
     public static String map(DeleteIncomeRequest deleteIncomeRequest, Incomes incomes) {
         Income income = incomes.findByUsernameAndIncomeTitle(deleteIncomeRequest.getUsername().toLowerCase(), deleteIncomeRequest.getIncomeTitle());
