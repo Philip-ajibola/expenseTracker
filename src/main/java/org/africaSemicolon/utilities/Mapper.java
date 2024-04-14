@@ -17,7 +17,6 @@ import org.africaSemicolon.exception.InvalidPasswordException;
 
 import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -46,12 +45,12 @@ public class Mapper {
         expenses.delete(expense);
         return "Expense Deleted Successfully";
     }
-    public static Income map(IncomeRequest incomeRequest) {
+    public static Income map(AddIncomeRequest addIncomeRequest) {
         Income income = new Income();
-        income.setIncomeTitle(incomeRequest.getIncomeTitle());
+        income.setIncomeTitle(addIncomeRequest.getIncomeTitle());
         //validateAmount(incomeRequest.getIncome());
-        income.setIncome(BigDecimal.valueOf(Double.parseDouble(incomeRequest.getIncome())));
-        income.setUsername(incomeRequest.getUsername().toLowerCase());
+        income.setIncome(BigDecimal.valueOf(Double.parseDouble(addIncomeRequest.getIncome())));
+        income.setUsername(addIncomeRequest.getUsername().toLowerCase());
         if (income.getIncome().compareTo(BigDecimal.ZERO) <= 0)
             throw new InvalidAmountException("Invalid Income Amount");
         return income;

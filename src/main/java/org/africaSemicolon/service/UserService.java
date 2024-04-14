@@ -14,7 +14,7 @@ public interface UserService {
     AddExpenseResponse addExpense(ExpenseRequest expenseRequest);
     CreateUserResponse registerUser(RegisterRequest request);
 
-    AddIncomeResponse addIncome(IncomeRequest incomeRequest);
+    AddIncomeResponse addIncome(AddIncomeRequest addIncomeRequest);
 
     String deleteExpense(DeleteExpenseRequest deleteExpenseRequest);
 

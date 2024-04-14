@@ -5,7 +5,6 @@ import org.africaSemicolon.dto.response.ApiResponse;
 import org.africaSemicolon.exception.ExpenseTrackerException;
 import org.africaSemicolon.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,9 +37,9 @@ public class UserController {
         }
     }
     @PostMapping("/add_income")
-    public ResponseEntity<?> addIncome(@RequestBody IncomeRequest incomeRequest){
+    public ResponseEntity<?> addIncome(@RequestBody AddIncomeRequest addIncomeRequest){
         try{
-            var result  = userService.addIncome(incomeRequest);
+            var result  = userService.addIncome(addIncomeRequest);
             return new ResponseEntity<>(new ApiResponse(true,result), CREATED);
         }catch (ExpenseTrackerException | InputMismatchException e) {
             return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),BAD_REQUEST);
@@ -109,7 +108,7 @@ public class UserController {
             return new ResponseEntity<>(new ApiResponse(false,e.getMessage()),BAD_REQUEST);
         }
     }
-    @PatchMapping("/log_out")
+    @PostMapping("/log_out")
     public ResponseEntity<?> logout(LogoutRequest logoutRequest){
         try{
             var result  = userService.logout(logoutRequest);

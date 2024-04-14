@@ -17,7 +17,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.InputMismatchException;
 
 import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
@@ -31,7 +30,7 @@ public class UserServiceTest {
     private Users users;
     @Autowired
     private Expenses expenses;
-    private IncomeRequest incomeRequest;
+    private AddIncomeRequest addIncomeRequest;
     private  ExpenseRequest expenseRequest;
     @BeforeEach
     public void Initializer(){
@@ -44,10 +43,10 @@ public class UserServiceTest {
         request.setLastName("lastName");
         request.setPassword("password");
 
-         incomeRequest = new IncomeRequest();
-        incomeRequest.setIncome("600000");
-        incomeRequest.setIncomeTitle("title");
-       incomeRequest.setUsername("username");
+         addIncomeRequest = new AddIncomeRequest();
+        addIncomeRequest.setIncome("600000");
+        addIncomeRequest.setIncomeTitle("title");
+       addIncomeRequest.setUsername("username");
 
         expenses.deleteAll();
         expenseRequest = new ExpenseRequest();
@@ -91,8 +90,8 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        userService.addIncome(incomeRequest);
+        addIncomeRequest.setUsername(user.getUsername());
+        userService.addIncome(addIncomeRequest);
         assertEquals(1,incomes.count());
         user = users.findByUsername(request.getUsername());
         assertEquals(1,user.getIncome().size());
@@ -117,8 +116,8 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        userService.addIncome(incomeRequest);
+        addIncomeRequest.setUsername(user.getUsername());
+        userService.addIncome(addIncomeRequest);
         expenseRequest.setExpenseOwnerName(user.getUsername());
         userService.addExpense(expenseRequest);
         user =  users.findByUsername(request.getUsername());
@@ -133,8 +132,8 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        userService.addIncome(incomeRequest);
+        addIncomeRequest.setUsername(user.getUsername());
+        userService.addIncome(addIncomeRequest);
         expenseRequest.setExpenseOwnerName(user.getUsername());
         userService.addExpense(expenseRequest);
         DeleteExpenseRequest deleteExpenseRequest = new DeleteExpenseRequest();
@@ -154,8 +153,8 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        userService.addIncome(incomeRequest);
+        addIncomeRequest.setUsername(user.getUsername());
+        userService.addIncome(addIncomeRequest);
         expenseRequest.setExpenseOwnerName(user.getUsername());
         userService.addExpense(expenseRequest);
         DeleteExpenseRequest deleteExpenseRequest = new DeleteExpenseRequest();
@@ -164,7 +163,7 @@ public class UserServiceTest {
         userService.deleteExpense(deleteExpenseRequest);
         DeleteIncomeRequest deleteIncomeRequest = new DeleteIncomeRequest();
         deleteIncomeRequest.setUsername("username");
-        deleteIncomeRequest.setIncomeTitle(incomeRequest.getIncomeTitle());
+        deleteIncomeRequest.setIncomeTitle(addIncomeRequest.getIncomeTitle());
         userService.deleteIncome(deleteIncomeRequest);
 
         user =  users.findByUsername(request.getUsername());
@@ -179,8 +178,8 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        userService.addIncome(incomeRequest);
+        addIncomeRequest.setUsername(user.getUsername());
+        userService.addIncome(addIncomeRequest);
         expenseRequest.setExpenseOwnerName(user.getUsername());
         userService.addExpense(expenseRequest);
         ExpenseRequest expenseRequest1 = new ExpenseRequest();
@@ -201,8 +200,8 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        userService.addIncome(incomeRequest);
+        addIncomeRequest.setUsername(user.getUsername());
+        userService.addIncome(addIncomeRequest);
         expenseRequest.setExpenseOwnerName(user.getUsername());
         userService.addExpense(expenseRequest);
         ExpenseRequest expenseRequest1 = new ExpenseRequest();
@@ -227,9 +226,9 @@ public class UserServiceTest {
         loginRequest.setPassword(user.getPassword());
         loginRequest.setUsername(user.getUsername());
         userService.login(loginRequest);
-        incomeRequest.setUsername(user.getUsername());
-        incomeRequest.setIncome("rt6gh");
-        assertThrows(InvalidAmountException.class,()-> userService.addIncome(incomeRequest));
+        addIncomeRequest.setUsername(user.getUsername());
+        addIncomeRequest.setIncome("rt6gh");
+        assertThrows(InvalidAmountException.class,()-> userService.addIncome(addIncomeRequest));
         assertEquals(0,incomes.count());
         user = users.findByUsername(request.getUsername());
         assertEquals(0,user.getIncome().size());

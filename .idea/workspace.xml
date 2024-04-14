@@ -5,14 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ff47e0-db93-4ca9-9477-0305ff0163a1" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/README" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Expenses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Expenses.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/IncomeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/AddIncomeRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/utilities/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/utilities/Mapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/IncomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/IncomeServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,57 +47,58 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "JUnit.ExpenseServiceImplTest.executor": "Run",
-    "JUnit.ExpenseServiceImplTest.testThatExpenseCanBeDeleted.executor": "Run",
-    "JUnit.ExpenseServiceImplTest.testThatExpensesCanBeAdded.executor": "Run",
-    "JUnit.ExpenseServiceImplTest.testThatWhenAmountIsLessThanZeroExceptionIsThrown.executor": "Run",
-    "JUnit.IncomeServiceImplTest.executor": "Run",
-    "JUnit.IncomeServiceImplTest.testThatIncomeCanBeAdded.executor": "Run",
-    "JUnit.IncomeServiceImplTest.testThatIncomeCanBeDeleted.executor": "Run",
-    "JUnit.IncomeServiceImplTest.testThatWhenUserNameIsNotSameErrorIsThrown.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "JUnit.UserServiceTest.testThatMultipleIncomeCanBeAdded.executor": "Run",
-    "JUnit.UserServiceTest.testThatUserCanAddExpenses.executor": "Run",
-    "JUnit.UserServiceTest.testThatUserCanAddIncome.executor": "Run",
-    "JUnit.UserServiceTest.testThatUserCanBeCreated.executor": "Run",
-    "JUnit.UserServiceTest.testThatUserCanLogin.executor": "Run",
-    "JUnit.UserServiceTest.testThatUserCanLogout.executor": "Run",
-    "JUnit.UserServiceTest.testThatWhenExpenseIsAddedIncomeAmountReduce.executor": "Run",
-    "JUnit.UserServiceTest.testThatWhenExpenseIsDeletedTheBalanceChangeStateToFormalState.executor": "Run",
-    "JUnit.UserServiceTest.testThatWhenInputIsInvalid_ExceptionIsThrown.executor": "Run",
-    "JUnit.UserServiceTest.testThatWhenUserIsNotLoggedInUserCantPerformAnyAction.executor": "Run",
-    "JUnit.UsersTest.testThatUserAreSaved.executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Spring Boot.Main.executor": "Run",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/home/michael/IdeaProjects/expenseTracker/src/main/java/org/africaSemicolon/dto/request",
-    "last_opened_file_path": "C:/Users/User/Desktop/ExpenseTrackerApp/expenseTracker",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "C:/Users/DELL/IdeaProjects/expenseTracker/src/main/java/org/africaSemicolon/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JUnit.ExpenseServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseServiceImplTest.testThatExpenseCanBeDeleted.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseServiceImplTest.testThatExpensesCanBeAdded.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseServiceImplTest.testThatWhenAmountIsLessThanZeroExceptionIsThrown.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IncomeServiceImplTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IncomeServiceImplTest.testThatIncomeCanBeAdded.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IncomeServiceImplTest.testThatIncomeCanBeDeleted.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.IncomeServiceImplTest.testThatWhenUserNameIsNotSameErrorIsThrown.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatMultipleIncomeCanBeAdded.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatUserCanAddExpenses.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatUserCanAddIncome.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatUserCanBeCreated.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatUserCanLogin.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatUserCanLogout.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatWhenExpenseIsAddedIncomeAmountReduce.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatWhenExpenseIsDeletedTheBalanceChangeStateToFormalState.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatWhenInputIsInvalid_ExceptionIsThrown.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.testThatWhenUserIsNotLoggedInUserCantPerformAnyAction.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UsersTest.testThatUserAreSaved.executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Spring Boot.Main.executor&quot;: &quot;Run&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/home/michael/IdeaProjects/expenseTracker/src/main/java/org/africaSemicolon/dto/request&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/ExpenseTrackerApp/expenseTracker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/DELL/IdeaProjects/expenseTracker/src/main/java/org/africaSemicolon/Main.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.africaSemicolon.exception" />
@@ -116,7 +121,7 @@
       <recent name="org.africaSemicolon.data.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceTest">
+  <component name="RunManager" selected="Spring Boot.Main">
     <configuration name="ExpenseServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="expenseTracker" />
       <extension name="coverage">
@@ -162,22 +167,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testThatUserCanAddIncome" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="expenseTracker" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.africaSemicolon.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
-      <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testThatUserCanAddIncome" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserServiceTest.testThatWhenUsernameIsEmptyUserCantBeRegistered" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="expenseTracker" />
       <extension name="coverage">
@@ -194,13 +183,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="expenseTracker" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.africaSemicolon.Main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.africaSemicolon.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.ExpenseServiceImplTest" />
+        <item itemvalue="JUnit.IncomeServiceImplTest" />
         <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="JUnit.UserServiceTest.testThatWhenUsernameIsEmptyUserCantBeRegistered" />
-        <item itemvalue="JUnit.UserServiceTest.testThatUserCanAddIncome" />
-        <item itemvalue="JUnit.IncomeServiceImplTest" />
-        <item itemvalue="JUnit.ExpenseServiceImplTest" />
       </list>
     </recent_temporary>
   </component>
@@ -219,6 +221,10 @@
       <workItem from="1712261551859" duration="30357000" />
       <workItem from="1712484285103" duration="598000" />
       <workItem from="1712688682558" duration="2280000" />
+      <workItem from="1712697873001" duration="2150000" />
+      <workItem from="1713024326088" duration="1302000" />
+      <workItem from="1713094222121" duration="1185000" />
+      <workItem from="1713104853843" duration="11838000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -228,7 +234,87 @@
       <option name="project" value="LOCAL" />
       <updated>1712241265636</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698548241</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698548241</updated>
+    </task>
+    <task id="LOCAL-00003" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698589432</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698589432</updated>
+    </task>
+    <task id="LOCAL-00004" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698622252</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698622252</updated>
+    </task>
+    <task id="LOCAL-00005" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698641925</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698641925</updated>
+    </task>
+    <task id="LOCAL-00006" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698677410</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698677410</updated>
+    </task>
+    <task id="LOCAL-00007" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698716454</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698716454</updated>
+    </task>
+    <task id="LOCAL-00008" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698771139</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698771139</updated>
+    </task>
+    <task id="LOCAL-00009" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698808597</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698808597</updated>
+    </task>
+    <task id="LOCAL-00010" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712698833265</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712698833265</updated>
+    </task>
+    <task id="LOCAL-00011" summary="commit">
+      <option name="closed" value="true" />
+      <created>1712699012809</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712699012809</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -1,6 +1,5 @@
 package org.africaSemicolon.service;
 
-import org.africaSemicolon.data.model.Category;
 import org.africaSemicolon.data.model.Expense;
 import org.africaSemicolon.data.model.Income;
 import org.africaSemicolon.data.model.User;
@@ -61,12 +60,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public AddIncomeResponse addIncome(IncomeRequest incomeRequest) {
-        validateMoney(incomeRequest.getIncome());
-        User user = findByUsername(incomeRequest.getUsername().toLowerCase());
+    public AddIncomeResponse addIncome(AddIncomeRequest addIncomeRequest) {
+        validateMoney(addIncomeRequest.getIncome());
+        User user = findByUsername(addIncomeRequest.getUsername().toLowerCase());
         validateLogin(user);
-        Income income = incomeService.addIncome(incomeRequest);
-        user.setBalance(user.getBalance().add(BigDecimal.valueOf(Double.parseDouble(incomeRequest.getIncome()))).setScale(2, RoundingMode.HALF_UP));
+        Income income = incomeService.addIncome(addIncomeRequest);
+        user.setBalance(user.getBalance().add(BigDecimal.valueOf(Double.parseDouble(addIncomeRequest.getIncome()))).setScale(2, RoundingMode.HALF_UP));
         user.getIncome().add(income);
         users.save(user);
         return map(income);
@@ -106,9 +105,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String login(LoginRequest loginRequest) {
+        if(loginRequest.getUsername() == null || loginRequest.getUsername().isEmpty()) throw new InValidUserNameException("Please Provide A Username");
+        if(loginRequest.getPassword() == null || loginRequest.getPassword().isEmpty()) throw new InvalidPasswordException("Provide A Password Please");
         User  user= findByUsername(loginRequest.getUsername().toLowerCase());
         validateUser(user);
-        if(!user.getPassword().equals(loginRequest.getPassword()))throw new InvalidPasswordException("Wrong Password \n Provide A Valid ");
+        if(!user.getPassword().equals(loginRequest.getPassword()))throw new InvalidPasswordException("Wrong Password \n Provide A Valid Password");
         user.setLoggedIn(true);
         users.save(user);
         return "Login Successful";
@@ -149,6 +150,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public String logout(LogoutRequest logoutRequest) {
+        if(logoutRequest.getUsername() == null || logoutRequest.getUsername().isEmpty()) throw new InValidUserNameException("Please Provide A Username");
+        if(logoutRequest.getPassword() == null || logoutRequest.getPassword().isEmpty()) throw new InvalidPasswordException("Provide A Password Please");
         User user = findByUsername(logoutRequest.getUsername().toLowerCase());
         if(!user.getPassword().equals(logoutRequest.getPassword()))throw new InvalidPasswordException("Wrong Password \n Provide A Valid ");
         user.setLoggedIn(false);
