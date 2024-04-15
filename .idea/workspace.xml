@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94ff47e0-db93-4ca9-9477-0305ff0163a1" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/README" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/UserLogoutRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Expenses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/data/repository/Expenses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/IncomeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/AddIncomeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/ExpenseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/IncomeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/dto/request/LogoutRequest.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/utilities/Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/africaSemicolon/utilities/Mapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/IncomeServiceImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/IncomeServiceImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/africaSemicolon/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +115,7 @@
       <recent name="org.africaSemicolon.data.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.Main">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
     <configuration name="ExpenseServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="expenseTracker" />
       <extension name="coverage">
@@ -167,7 +161,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testThatWhenUsernameIsEmptyUserCantBeRegistered" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testThatUserCanLogout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="expenseTracker" />
       <extension name="coverage">
         <pattern>
@@ -177,7 +171,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="org.africaSemicolon.service" />
       <option name="MAIN_CLASS_NAME" value="org.africaSemicolon.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testThatWhenUsernameIsEmptyUserCantBeRegistered" />
+      <option name="METHOD_NAME" value="testThatUserCanLogout" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -198,11 +192,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.UserServiceTest" />
         <item itemvalue="Spring Boot.Main" />
+        <item itemvalue="JUnit.UserServiceTest.testThatUserCanLogout" />
         <item itemvalue="JUnit.ExpenseServiceImplTest" />
         <item itemvalue="JUnit.IncomeServiceImplTest" />
-        <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.UserServiceTest.testThatWhenUsernameIsEmptyUserCantBeRegistered" />
       </list>
     </recent_temporary>
   </component>
@@ -224,7 +218,8 @@
       <workItem from="1712697873001" duration="2150000" />
       <workItem from="1713024326088" duration="1302000" />
       <workItem from="1713094222121" duration="1185000" />
-      <workItem from="1713104853843" duration="11838000" />
+      <workItem from="1713104853843" duration="12255000" />
+      <workItem from="1713125635750" duration="3760000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -314,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712699012809</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="commit">
+      <option name="closed" value="true" />
+      <created>1713122808508</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713122808508</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

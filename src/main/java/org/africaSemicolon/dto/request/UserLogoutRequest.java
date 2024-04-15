@@ -3,7 +3,7 @@ package org.africaSemicolon.dto.request;
 import lombok.Data;
 
 @Data
-public class LogoutRequest {
+public class UserLogoutRequest {
     private String username;
     private String password;
 }

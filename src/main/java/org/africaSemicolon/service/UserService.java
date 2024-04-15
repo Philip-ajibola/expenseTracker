@@ -27,5 +27,5 @@ public interface UserService {
     List<Expense> findAllExpenses(String username);
     String deleteUser(String username);
 
-    String logout(LogoutRequest logoutRequest);
+    String logout(UserLogoutRequest logoutRequest);
 }

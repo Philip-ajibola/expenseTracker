@@ -149,7 +149,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public String logout(LogoutRequest logoutRequest) {
+    public String logout(UserLogoutRequest logoutRequest) {
         if(logoutRequest.getUsername() == null || logoutRequest.getUsername().isEmpty()) throw new InValidUserNameException("Please Provide A Username");
         if(logoutRequest.getPassword() == null || logoutRequest.getPassword().isEmpty()) throw new InvalidPasswordException("Provide A Password Please");
         User user = findByUsername(logoutRequest.getUsername().toLowerCase());

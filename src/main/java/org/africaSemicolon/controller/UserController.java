@@ -109,7 +109,7 @@ public class UserController {
         }
     }
     @PostMapping("/log_out")
-    public ResponseEntity<?> logout(LogoutRequest logoutRequest){
+    public ResponseEntity<?> logout(@RequestBody UserLogoutRequest logoutRequest){
         try{
             var result  = userService.logout(logoutRequest);
             return new ResponseEntity<>(new ApiResponse(true,result), CREATED);

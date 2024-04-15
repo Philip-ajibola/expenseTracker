@@ -243,7 +243,7 @@ public class UserServiceTest {
     public void testThatUserCanLogout(){
         userService.registerUser(request);
         User user = users.findByUsername(request.getUsername());
-        LogoutRequest logoutRequest = new LogoutRequest();
+        UserLogoutRequest logoutRequest = new UserLogoutRequest();
         logoutRequest.setPassword(user.getPassword());
         logoutRequest.setUsername(user.getUsername());
         assertFalse(user.isLoggedIn());
